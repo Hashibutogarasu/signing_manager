@@ -56,7 +56,7 @@ impl TpmManager {
     pub fn decrypt(&mut self, encrypted: &[u8]) -> Result<Vec<u8>> {
         let session = self.session.as_mut().ok_or(SigningError::NotOpened)?;
         if encrypted.len() < IV_SIZE {
-            return Err(SigningError::Tpm("encrypted data is too short".into()));
+            return Err(SigningError::EncryptedDataTooShort);
         }
         let (iv, cipher) = encrypted.split_at(IV_SIZE);
         session.transform(true, cipher, iv)

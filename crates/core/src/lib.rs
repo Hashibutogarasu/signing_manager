@@ -14,6 +14,8 @@ pub enum SigningError {
     AlreadyOpened,
     #[error("key is unavailable")]
     KeyUnavailable,
+    #[error("encrypted data is too short")]
+    EncryptedDataTooShort,
     #[error("tpm error: {0}")]
     Tpm(String),
 }
