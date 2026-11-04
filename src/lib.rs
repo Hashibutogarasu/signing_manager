@@ -1,25 +1,6 @@
-use thiserror::Error;
 use zeroize::{Zeroize, ZeroizeOnDrop};
 
-#[derive(Debug, Error, PartialEq, Eq)]
-pub enum SigningError {
-    #[error("not opened")]
-    NotOpened,
-    #[error("already opened")]
-    AlreadyOpened,
-    #[error("key is unavailable")]
-    KeyUnavailable,
-}
-
-pub type Result<T> = std::result::Result<T, SigningError>;
-
-pub trait Openable {
-    fn open(&mut self) -> Result<()>;
-}
-
-pub trait Closable {
-    fn close(&mut self);
-}
+pub use signing_core::{Closable, Openable, Result, SigningError};
 
 pub trait SecretKey: Openable + Closable {
     fn get(&self) -> Result<&[u8]>;

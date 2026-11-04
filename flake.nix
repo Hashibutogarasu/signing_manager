@@ -21,6 +21,8 @@
           version = "0.1.0";
           src = self;
           cargoLock.lockFile = ./Cargo.lock;
+          nativeBuildInputs = [ pkgs.pkg-config ];
+          buildInputs = [ pkgs.tpm2-tss ];
         };
       });
 
@@ -31,6 +33,8 @@
             rustc
             clippy
             rustfmt
+            pkg-config
+            tpm2-tss
           ];
         };
       });

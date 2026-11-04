@@ -1,0 +1,8 @@
+[package]
+name = "tpm_manager"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+signing_core = { path = "../core" }
+tss-esapi = "7.6.0"
