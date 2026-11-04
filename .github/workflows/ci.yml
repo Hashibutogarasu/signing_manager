@@ -22,11 +22,11 @@ jobs:
         with:
           init: none
       - name: Format
-        run: nix develop -c cargo fmt --check
+        run: nix develop -c cargo fmt --all --check
       - name: Clippy
-        run: nix develop -c cargo clippy --all-targets -- -D warnings
+        run: nix develop -c cargo clippy --workspace --all-targets -- -D warnings
       - name: Test
-        run: nix develop -c cargo test
+        run: nix develop -c cargo test --workspace
 
   build:
     needs: ci

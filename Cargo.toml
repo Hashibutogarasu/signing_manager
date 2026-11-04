@@ -3,6 +3,9 @@ name = "signing_manager"
 version = "0.1.0"
 edition = "2024"
 
+[workspace]
+members = ["crates/*"]
+
 [dependencies]
-thiserror = "2.0.21"
+signing_core = { path = "crates/core" }
 zeroize = { version = "1.9.1", features = ["derive"] }
