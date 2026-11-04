@@ -8,14 +8,14 @@ on:
 
 jobs:
   ci:
-    runs-on: ubuntu-latest
-    container: ubuntu:latest
+    runs-on: ubuntu-24.04
+    container: ubuntu:24.04
     steps:
       - name: Install base packages
         run: |
           apt-get update
           apt-get install -y --no-install-recommends ca-certificates curl git xz-utils
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Trust workspace
         run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
       - uses: DeterminateSystems/nix-installer-action@main
@@ -30,14 +30,14 @@ jobs:
 
   build:
     needs: ci
-    runs-on: ubuntu-latest
-    container: ubuntu:latest
+    runs-on: ubuntu-24.04
+    container: ubuntu:24.04
     steps:
       - name: Install base packages
         run: |
           apt-get update
           apt-get install -y --no-install-recommends ca-certificates curl git xz-utils
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Trust workspace
         run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
       - uses: DeterminateSystems/nix-installer-action@main
